@@ -1,0 +1,22 @@
+{
+    "name": "jrs/php-container-di",
+    "description": "Just a simple PHP Dependency Injection Container",
+    "type": "package",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Jrs\\DI\\": "src/di",
+            "Jrs\\Tests\\": "src/tests"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jacson R. Sasse",
+            "email": "jacson.sasse@hotmail.com"
+        }
+    ],
+    "require": {
+        "psr/container": "^2.0",
+        "squizlabs/php_codesniffer": "^3.7"
+    }
+}
