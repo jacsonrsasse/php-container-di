@@ -1,5 +1,3 @@
 ## PHP Dependency Injection Container
 
-Just a study about the theme.
-
-Working...
+Apenas é um estudo sobre a PSR-11, uma aplicação simples que tem o objetivo de servir como "container" gerenciadora das injeções de dependências.
