@@ -24,3 +24,21 @@ Neste exemplo, o `TestController` possuia um argumento `service` que era uma imp
 ~~Basicamento era um `DE => PARA` se preferir desta forma.~~
 
 Porém convenhamos que não era uma abordagem muito prática. Mesmo funcionando o auto wiring para classes explicitamente tipadas, o uso de interfaces torna um pouco mais complexa a implementação. Não sou à favor de ter um arquivo para `setar` todas as injeções de dependências da aplicação, porque pensando em uma abordagem de uma aplicação de médio à grande porte, esse arquivo seria gigantesco. Mesmo "quebrando" esse arquivo em menores e unindo tudo, acredito que não é uma abordagem prática e correta da situação.
+
+<hr>
+
+## Alterações
+
+#### Dia 24/10/22
+
+<br>
+
+Apagada a pasta de testes que eu tinha para testar a versão 1 deste DI, e instalada a dependência do `php unit`. Todavia, tive problemas com compatibilidade para conseguir instalar esse pacote, precisando rodas o comando:
+
+> composer require --dev phpunit/phpunit ^9 --ignore-platform-reqs
+
+<br>
+
+Criado também o arquivo `phpunit.xml` na raíz do projeto.
+
+Além disso, a minha extensão de PHPUnit me deixou na mão, então troquei para a `Better PHPUnit`, e com ela consegui rodar os testes.
