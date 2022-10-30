@@ -29,7 +29,7 @@ Porém convenhamos que não era uma abordagem muito prática. Mesmo funcionando 
 
 ## Alterações
 
-#### Dia 24/10/22
+#### 2022-10-24
 
 <br>
 
@@ -42,3 +42,25 @@ Apagada a pasta de testes que eu tinha para testar a versão 1 deste DI, e insta
 Criado também o arquivo `phpunit.xml` na raíz do projeto.
 
 Além disso, a minha extensão de PHPUnit me deixou na mão, então troquei para a `Better PHPUnit`, e com ela consegui rodar os testes.
+
+<br>
+
+<hr>
+
+## Alterações
+
+#### 2022-10-30
+
+Tive que fazer alguns ajustes no PHPUnit, porque eu queria o Coverage funcionando corretamente. Como eu estou utilizando a extensão `Better PHPUnit`, precisei adicionar uma configuração para gerar corretamente:
+
+> "better-phpunit.commandSuffix": "--coverage-html ./tests/coverage"
+
+Desta forma ao executar os testes esse complemento é adicionado à instrução e os coverage gera na pasta indicada. Também adicionei essa pasta no `.gitignore` porque não preciso desses dados no meu GitHub.
+
+<br>
+
+Também precisei habilitar no `php.ini`, a configuração:
+
+> xdebug.mode=debug,coverage
+
+Para que assim consiga gerar o coverage.
