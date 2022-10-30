@@ -6,7 +6,8 @@
     "autoload": {
         "psr-4": {
             "Jrs\\DI\\": "src/di",
-            "Jrs\\Tests\\": "src/tests"
+            "Jrs\\Tests\\": "src/tests",
+            "Jrs\\Example\\": "src/example"
         }
     },
     "authors": [
