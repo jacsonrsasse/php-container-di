@@ -9,7 +9,7 @@ namespace Jrs\Example;
  *
  * @author Jacson R. Sasse <jacsonrsasse@gmail.com>
  */
-class SimpleConstructor
+class SimpleConstructor implements PrintableInterface
 {
     public function __construct(private SimpleInjectedClass $injectedClass)
     {

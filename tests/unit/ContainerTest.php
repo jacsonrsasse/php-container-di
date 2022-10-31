@@ -3,6 +3,9 @@
 namespace Tests\Unit;
 
 use Jrs\DI\Container;
+use Jrs\DI\Exception\ContainerException;
+use Jrs\Example\SimpleConstructor;
+use Jrs\Example\SimpleSingleton;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,13 +17,60 @@ class ContainerTest extends TestCase
 {
     private $container;
 
+    /**
+     * Set up the test class
+     *
+     * @return void
+     */
     protected function setUp(): void
     {
         $this->container = new Container();
     }
 
+    /**
+     * Called after execute a test and before destruct
+     *
+     * @return void
+     */
     protected function tearDown(): void
     {
         unset($this->container);
+    }
+
+    /**
+     * Implements a simple test over "get", returning a class with a
+     * simple dependency injection. If you see SimpleConstructor class
+     * you will realize that it has a parameter of SimpleInjectedClass.
+     * This Container must be able to resolve this problema using
+     * "autowiring".
+     *
+     * @covers Container::get
+     *
+     * @return void
+     */
+    public function testSimpleGet(): void
+    {
+        $class = $this->container->get(SimpleConstructor::class);
+        $this->assertInstanceOf(SimpleConstructor::class, $class);
+    }
+
+    /**
+     * Implements a test over "get", trying to resolve a singleton
+     * class. This test is expected to crash.
+     *
+     * @covers Container::get
+     *
+     * @return void
+     */
+    public function testGetClassWithPrivateConstruct(): void
+    {
+        try {
+            $this->container->get(SimpleSingleton::class);
+        } catch (ContainerException $containerException) {
+            $this->assertEquals(
+                "Trying to instantiate a class with a private construtor. You must use the 'singleton' method!",
+                $containerException->getMessage()
+            );
+        }
     }
 }

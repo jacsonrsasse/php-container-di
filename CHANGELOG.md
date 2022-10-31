@@ -25,7 +25,7 @@ Neste exemplo, o `TestController` possuia um argumento `service` que era uma imp
 
 Porém convenhamos que não era uma abordagem muito prática. Mesmo funcionando o auto wiring para classes explicitamente tipadas, o uso de interfaces torna um pouco mais complexa a implementação. Não sou à favor de ter um arquivo para `setar` todas as injeções de dependências da aplicação, porque pensando em uma abordagem de uma aplicação de médio à grande porte, esse arquivo seria gigantesco. Mesmo "quebrando" esse arquivo em menores e unindo tudo, acredito que não é uma abordagem prática e correta da situação.
 
-<hr>
+---
 
 ## Alterações
 
@@ -45,11 +45,13 @@ Além disso, a minha extensão de PHPUnit me deixou na mão, então troquei para
 
 <br>
 
-<hr>
+---
 
 ## Alterações
 
 #### 2022-10-30
+
+Criada nova classe Container, a anterior eu renomeei para Container_old.
 
 Tive que fazer alguns ajustes no PHPUnit, porque eu queria o Coverage funcionando corretamente. Como eu estou utilizando a extensão `Better PHPUnit`, precisei adicionar uma configuração para gerar corretamente:
 
@@ -64,3 +66,16 @@ Também precisei habilitar no `php.ini`, a configuração:
 > xdebug.mode=debug,coverage
 
 Para que assim consiga gerar o coverage.
+
+---
+
+Test List
+
+-   [ ] Teste simples do método `get`, retornando uma instância. Esse teste deverá utilizar auto wiring, ou seja, ele DEVE ser capaz de resolver situações simples, onde a classe esta determinada como Injeção de Dependência em outra.
+-   [ ] Teste do método `get` tentando instanciar uma classe com o construtor privativo, uma técnica utilizada as vezes na criação de classes singleton. Esse teste deverá esperar uma exceção.
+-   [ ] Teste do método `get` tentando instanciar uma classe com o construtor sem parâmetros. O retorno deve ser a classe sem erros.
+-   [ ] Teste do método `has`. Este método irá trabalhar da seguinte forma:
+    1. Ele verificará se determinada classe está préviamente mapeada entre as que precisam de tratamento especial para resolução. Portanto precisará que o programador defina como determinada classe deverá ser resolvida. Essa situação será util quando a Injeção de Dependência é uma Interface.
+    2. Se NÃO houver mapeamento, esse método deverá retornar um erro.
+-   [ ] Teste do método `has` onde não houve o mapeamento, esperando um Exception como resposta. Situação já descrita anteriormente.
+-   [ ] Teste do método `singleton` que deverá retornar uma classe de instância única. Esse teste deverá executar o comando, alterar algum valor do objeto, e chamar o método novamente. O objeto retornado na segunda chamada deverá conter a alteração anterior, já que é um Singleton.
