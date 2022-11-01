@@ -69,6 +69,14 @@ Para que assim consiga gerar o coverage.
 
 ---
 
+## Alterações
+
+#### 2022-10-31
+
+Criada nova configuração no arquivo do `phpunit.xml`, agora não preciso mais da configuração de comando adicional que acrescentei anteriormente na extensão.
+
+---
+
 Test List
 
 -   [ ] Teste simples do método `get`, retornando uma instância. Esse teste deverá utilizar auto wiring, ou seja, ele DEVE ser capaz de resolver situações simples, onde a classe esta determinada como Injeção de Dependência em outra.
