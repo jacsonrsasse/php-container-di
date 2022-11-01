@@ -6,13 +6,28 @@
 >
     <testsuites>
         <testsuite name="unit">
-            <directory>tests</directory>
+            <directory>tests/unit</directory>
         </testsuite>
     </testsuites>
+<!--
+    <coverage
+        cacheDirectory="./tests/coverage"
+    >
+        <include>
+            <directory suffix=".php">src/di</directory>
+        </include>
+        <exclude>
+            <file>src/di/Container_old.php</file>
+        </exclude>
+
+        <report>
+            <html outputDirectory="tests/coverage"/>
+        </report>
+    </coverage> -->
 
     <filter>
         <whitelist>
-            <directory suffix=".php">src/di</directory>
+            <directory>src/di</directory>
         </whitelist>
     </filter>
 </phpunit>
