@@ -5,6 +5,7 @@ namespace Tests\Unit;
 use Jrs\DI\Container;
 use Jrs\DI\Exception\ContainerException;
 use Jrs\Example\SimpleConstructor;
+use Jrs\Example\SimpleConstructorWithoutArguments;
 use Jrs\Example\SimpleSingleton;
 use PHPUnit\Framework\TestCase;
 
@@ -72,5 +73,22 @@ class ContainerTest extends TestCase
                 $containerException->getMessage()
             );
         }
+    }
+
+    /**
+     * Implements a test over "get", getting a class who has
+     * no arguments on its constructor.
+     *
+     * @covers Container::get
+     *
+     * @return void
+     */
+    public function testGetClassWithNoArgumentsInConstruct(): void
+    {
+        $class = $this->container->get(SimpleConstructorWithoutArguments::class);
+        $this->assertEquals('foo', $class->print());
+        $reflection = new \ReflectionClass($class);
+        $this->assertEquals(0, $reflection->getConstructor()->getNumberOfParameters());
+        unset($reflection);
     }
 }
