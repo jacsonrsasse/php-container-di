@@ -9,25 +9,17 @@
             <directory>tests/unit</directory>
         </testsuite>
     </testsuites>
-<!--
-    <coverage
-        cacheDirectory="./tests/coverage"
-    >
-        <include>
-            <directory suffix=".php">src/di</directory>
-        </include>
-        <exclude>
-            <file>src/di/Container_old.php</file>
-        </exclude>
 
-        <report>
-            <html outputDirectory="tests/coverage"/>
-        </report>
-    </coverage> -->
+    <logging>
+        <log type="coverage-html" target="/tests/coverage"/>
+    </logging>
 
     <filter>
         <whitelist>
             <directory>src/di</directory>
+            <exclude>
+                <file>src/di/Container_old.php</file>
+            </exclude>
         </whitelist>
     </filter>
 </phpunit>

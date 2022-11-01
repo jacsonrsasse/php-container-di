@@ -69,6 +69,14 @@ Para que assim consiga gerar o coverage.
 
 ---
 
+## Alterações
+
+#### 2022-10-31
+
+Meus testes pararam de funcionar, devo ter alterado algo que causou o problema. Porém, consegui resolver. Agora meu `phpunit.xml` tem uma tag de `logging`, que segundo a documentação deles deverá trabalhar como o comando que eu tinha configurado para acrescentar na execução. Como consequência, eu removi o comando adicional das configurações da extensão.
+
+---
+
 Test List
 
 -   [ ] Teste simples do método `get`, retornando uma instância. Esse teste deverá utilizar auto wiring, ou seja, ele DEVE ser capaz de resolver situações simples, onde a classe esta determinada como Injeção de Dependência em outra.
